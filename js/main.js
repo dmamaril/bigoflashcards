@@ -2,9 +2,9 @@ require([
   'jquery',
   'backbone',
   'views/root',
-  'routers/todo-list',
+  'routers/flashcards',
   'helpers'
-], function ($, Backbone, RootView, TodoListRouter ) {
+], function ($, Backbone, RootView, FlashcardsRouter ) {
   $(function() {
     Backbone.history.start({
       pushState: false,
@@ -19,7 +19,7 @@ require([
     RootView.getInstance(document.body);
 
     // Initialize your routers here
-    new TodoListRouter();
+    new FlashcardsRouter();
 
     // This will trigger your routers to start
     Backbone.history.loadUrl();
