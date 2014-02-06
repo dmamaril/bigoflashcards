@@ -7,9 +7,8 @@ require([
 ], function ($, Backbone, RootView, FlashcardsRouter ) {
   $(function() {
     Backbone.history.start({
-      pushState: false,
-      root: '/',
-      silent: true
+      pushState: true,
+      root: '/'
     });
 
     // RootView may use link or url helpers which

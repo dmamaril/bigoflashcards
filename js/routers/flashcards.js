@@ -1,28 +1,38 @@
 define([
   'backbone',
-  'collection',
+  'models/flashcards/flashcard',
+  'collections/flashcards/deck',
   'views/root',
   'views/flashcards/index'
-], function (Backbone, Collection, RootView, FlashcardIndexView) {
+], function (Backbone, Flashcard, Deck, RootView, FlashcardIndexView) {
   return Backbone.Router.extend({
     routes: {
-      "": "index"
+      "": "index",
+      "index": "index",
+      ':id': "showCard"
     },
+
     index: function(){
-      var collection = new Collection([
+      var collection = new Deck([
       {
+        id: 0,
         question: "What is the complexity of Bubble Sort?",
         answer: "O(n^2)"
       }, {
+        id: 1,
         question: "What is the complexity of Doug?",
-        answer: "O(?)"
+        answer: "Trick question."
       }
       ]);
       var view = new FlashcardIndexView({
+        model: new Flashcard(),
         collection: collection
       });
       RootView.getInstance().setView(view);
 
     }
+
+
+
   });
 });
