@@ -10,15 +10,19 @@ define([
     name: 'flashcards/index',
     template: template,
     events: {
-      "click a.previous": "previous",
-      "click a.next": "next",
-      "click a.flip": "flip"
+      "click button.previous": "previous",
+      "click button.next": "next",
+      "click button.toggle": "toggle",
+      "click button.add": "add"
     },
+    
     previous: function(e){
       e.preventDefault();
       if (this.model.id === 0) {
         this.model = this.collection.get(this.collection.length - 1);
-      } else this.model = this.collection.get(this.model.id - 1);
+      } else {
+        this.model = this.collection.get(this.model.id - 1);
+      }
       this.render();
     },
 
@@ -26,14 +30,19 @@ define([
       e.preventDefault();
       if (this.model.id === this.collection.length - 1) {
         this.model = this.collection.get(0);
-      } else this.model = this.collection.get(this.model.id + 1);
+      } else {
+        this.model = this.collection.get(this.model.id + 1);
+      }
       this.render();
     },
     
-    flip: function(e){
-      e.preventDefault();
-      $('.hide').toggleClass('hide');
-    }
+    toggle: function(e){
+      $('.toggle').toggleClass('hide');
+    },
 
+    add: function(e){
+      e.preventDefault();
+      router.navigate('add', {trigger: true});
+    }
   });
 });
