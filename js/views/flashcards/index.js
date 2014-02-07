@@ -5,9 +5,7 @@ define([
 ], function (View, template, router) {
   return View.extend({
     initialize: function(){
-      console.log(this.collection);
       this.model = this.collection.get(0);
-      console.log(this.model);
     },
     name: 'flashcards/index',
     template: template,
