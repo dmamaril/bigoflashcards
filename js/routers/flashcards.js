@@ -7,6 +7,7 @@ define([
   'views/flashcards/add'
 ], function (Backbone, Flashcard, Deck, RootView, FlashcardIndexView, AddFlashcardView) {
   // TODO: Fix this fucking circular reference
+  // http://lostechies.com/derickbailey/2011/08/28/dont-execute-a-backbone-js-route-handler-from-your-code/
   return Backbone.Router.extend({
     routes: {
       "": "index",

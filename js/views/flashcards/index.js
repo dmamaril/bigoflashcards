@@ -15,7 +15,7 @@ define([
       "click button.toggle": "toggle",
       "click button.add": "add"
     },
-    
+
     previous: function(e){
       e.preventDefault();
       if (this.model.id === 0) {
@@ -42,7 +42,8 @@ define([
 
     add: function(e){
       e.preventDefault();
-      router.navigate('add', {trigger: true});
+      this.collection.add();
+      // router.navigate('add', {trigger: true});
     }
   });
 });

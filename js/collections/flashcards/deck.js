@@ -5,5 +5,6 @@ define([
   return Collection.extend({
     name: 'flashcards/deck',
     model: Flashcard
+    // TODO: add controller to manage views
   });
 });
