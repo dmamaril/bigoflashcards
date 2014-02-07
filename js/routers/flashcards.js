@@ -16,12 +16,16 @@ define([
       var collection = new Deck([
       {
         id: 0,
-        question: "What is the complexity of Bubble Sort?",
+        question: "What is the time complexity of Bubble Sort?",
         answer: "O(n^2)"
       }, {
         id: 1,
+        question: "What is the space complexity of Merge Sort?",
+        answer: "O(n^2)."
+      }, {
+        id: 2,
         question: "What is the complexity of Doug?",
-        answer: "Trick question."
+        answer: "Too complex."
       }
       ]);
       var view = new FlashcardIndexView({
@@ -31,8 +35,6 @@ define([
       RootView.getInstance().setView(view);
 
     }
-
-
 
   });
 });

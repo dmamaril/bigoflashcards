@@ -18,12 +18,18 @@ define([
     previous: function(e){
       e.preventDefault();
       // router.navigate('/previous');
-      this.model = this.collection.get(this.model.id - 1);
+      if (this.model.id === 0) {
+        this.model = this.collection.get(this.collection.length - 1);
+      } else this.model = this.collection.get(this.model.id - 1);
+      this.render();
     },
     next: function(e){
       e.preventDefault();
       // router.navigate('/next');
-      this.model = this.collection.get(this.model.id + 1);
+      if (this.model.id === this.collection.length - 1) {
+        this.model = this.collection.get(0);
+      } else this.model = this.collection.get(this.model.id + 1);
+      this.render();
     }
   });
 });
