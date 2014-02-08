@@ -1,24 +1,29 @@
 define([
   'view',
   'hbs!templates/flashcards/add',
+  'views/root',
   'routers/mediator'
-], function (View, template, mediator) {
+], function (View, template, RootView, mediator) {
   return View.extend({
     name: 'flashcards/add',
     template: template,
     initialize: function(){
       mediator.on('add', function(){
-        $('body').append(this.render());
+        RootView.getInstance().setView(this);
+        // $('body').append(this.render());
       }.bind(this));
     },
     events: {
-      'click button.add': 'addToCollection'
+      'submit': 'addToCollection'
     },
     addToCollection: function(e){
       e.preventDefault();
-      this.remove();
+      debugger;
+      alert("YEAH");
       this.collection.add(this.serialize());
+      this.remove();
       mediator.trigger('added');
+      console.log(this.serialize());
     }
   });
 });

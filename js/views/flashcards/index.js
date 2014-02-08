@@ -2,13 +2,14 @@ define([
   'view',
   'hbs!templates/flashcards/index',
   'routers/mediator',
+  'views/root',
   'routers/flashcards'
-], function (View, template, mediator, router) {
+], function (View, template, mediator, RootView, router) {
   return View.extend({
     initialize: function(){
       this.model = this.collection.get(0);
       mediator.on('added', function(){
-        $('body').append(this.render());
+        RootView.getInstance().setView(this);
       }.bind(this));
     },
     name: 'flashcards/index',
