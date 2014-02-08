@@ -1,11 +1,15 @@
 define([
   'view',
   'hbs!templates/flashcards/index',
+  'routers/mediator',
   'routers/flashcards'
-], function (View, template, router) {
+], function (View, template, mediator, router) {
   return View.extend({
     initialize: function(){
       this.model = this.collection.get(0);
+      mediator.on('added', function(){
+        $('body').append(this.render());
+      }.bind(this));
     },
     name: 'flashcards/index',
     template: template,
@@ -42,8 +46,9 @@ define([
 
     add: function(e){
       e.preventDefault();
-      this.collection.add();
-      // router.navigate('add', {trigger: true});
+      // this.collection.add();
+      this.remove();
+      mediator.trigger('add');
     }
   });
 });

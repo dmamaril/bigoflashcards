@@ -38,7 +38,10 @@ define([
         collection: this.collection
       });
       RootView.getInstance().setView(indexView);
-
+      var flashcardView = new AddFlashcardView({
+        model: new Flashcard(),
+        collection: this.collection
+      });
     },
 
     add: function(){
