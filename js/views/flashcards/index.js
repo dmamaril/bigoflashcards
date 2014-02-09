@@ -10,12 +10,6 @@ define([
     initialize: function(){
       View.prototype.initialize.apply(this, arguments); // call standard Thorax init code
       this.model = this.collection.get(0);
-      // debugger;
-      // var that = this;
-      // mediator.on('added', function(){
-      //   debugger;
-      //   RootView.getInstance().setView();
-      // });
     },
 
     name: 'flashcards/index',
@@ -53,7 +47,6 @@ define([
 
     add: function(e){
       e.preventDefault();
-      // this.collection.add();
       mediator.trigger('add');
     }
   });

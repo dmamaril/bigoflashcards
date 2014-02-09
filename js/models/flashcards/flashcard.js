@@ -4,7 +4,7 @@ define(['model'], function (Model) {
 
     defaults: {
       question: "What is Doug?",
-      answer: "Who knows?"
+      answer: "Nobody knows."
     }
   });
 });

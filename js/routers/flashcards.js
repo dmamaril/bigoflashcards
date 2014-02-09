@@ -19,16 +19,6 @@ define([
 
     initialize: function(){
       mediator.on('added', this.index.bind(this));
-      // mediator.on('added', function(){
-        // RootView.getInstance().setView(new FlashcardIndexView{
-        //   model: new Flashcard(),
-        //   collection: this.collection
-        // });
-        // var flashcardView = new AddFlashcardView({
-        //   model: new Flashcard(),
-        //   collection: this.collection
-        // });
-      // });
       mediator.on('add', this.add.bind(this));
     },
 
@@ -62,8 +52,6 @@ define([
     },
 
     add: function(){
-      // console.log(this);
-      // console.log(this.collection)
       var flashcardView = new AddFlashcardView({
         model: new Flashcard(),
         collection: this.collection

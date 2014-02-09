@@ -20,15 +20,7 @@ define([
       'submit': 'addToCollection'
     },
     addToCollection: function(e){
-      debugger;
       e.preventDefault();
-      // var newUserSkillList = [],
-      //     newUserSkillLevels = [];
-      // $('select.skillList').each(function(index, element){
-      //   newUserSkillLevels.push(element.value);
-      // });
-      // var newUserSkills = JSON.stringify(_.object(newUserSkillList, newUserSkillLevels));
-      // var newUserSkills = _.object(newUserSkillList, newUserSkillLevels);
       var complexity = [];
       $('select.complexities').each(function(index, element){
         complexity.push(element.value);
@@ -38,6 +30,7 @@ define([
         id: this.collection.length,
         answer: complexity[0]
       }));
+      
       mediator.trigger('added');
     }
   });
