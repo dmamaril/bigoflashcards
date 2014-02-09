@@ -3,9 +3,8 @@ define([
   'view',
   'hbs!templates/flashcards/index',
   'routers/mediator',
-  'views/root',
-  'routers/flashcards'
-], function (_, View, template, mediator, RootView, router) {
+  'views/root'
+], function (_, View, template, mediator, RootView) {
   return View.extend({
     initialize: function(){
       View.prototype.initialize.apply(this, arguments); // call standard Thorax init code
@@ -34,11 +33,10 @@ define([
 
     checkGuess: function(e){
       console.log(this.model)
-      if (e.target.innerHTML === this.model.get("answer")){
-        console.log("YOU WIN")
+      if (e.target.innerHTML === this.model.get('answer')){
+        console.log("YOU WIN");
       } else {
-        console.log("YOU LOSE SIR. GOOD DAY SIR")
-
+        console.log("YOU LOSE SIR. GOOD DAY SIR");
       }
     },
 

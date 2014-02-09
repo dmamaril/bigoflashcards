@@ -18,10 +18,5 @@ define([
     return instance;
   };
 
-  // mediator.on('added', _.bind(function(){
-  //   debugger;
-  //   RootView.getInstance().setView(this);
-  // }, this));
-
   return RootView;
 });
