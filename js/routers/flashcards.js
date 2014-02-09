@@ -4,8 +4,9 @@ define([
   'collections/flashcards/deck',
   'views/root',
   'views/flashcards/index',
-  'views/flashcards/add'
-], function (Backbone, Flashcard, Deck, RootView, FlashcardIndexView, AddFlashcardView) {
+  'views/flashcards/add',
+  'routers/mediator',
+], function (Backbone, Flashcard, Deck, RootView, FlashcardIndexView, AddFlashcardView, mediator) {
   // TODO: Fix this fucking circular reference
   // http://lostechies.com/derickbailey/2011/08/28/dont-execute-a-backbone-js-route-handler-from-your-code/
   return Backbone.Router.extend({
@@ -14,6 +15,21 @@ define([
       "index": "index",
       "add": "add",
       ':id': "showCard"
+    },
+
+    initialize: function(){
+      mediator.on('added', this.index.bind(this));
+      // mediator.on('added', function(){
+        // RootView.getInstance().setView(new FlashcardIndexView{
+        //   model: new Flashcard(),
+        //   collection: this.collection
+        // });
+        // var flashcardView = new AddFlashcardView({
+        //   model: new Flashcard(),
+        //   collection: this.collection
+        // });
+      // });
+      mediator.on('add', this.add.bind(this));
     },
 
     collection: new Deck([
@@ -33,6 +49,7 @@ define([
     ]),
 
     index: function(){
+      console.log(this);
       var indexView = new FlashcardIndexView({
         model: new Flashcard(),
         collection: this.collection
@@ -45,6 +62,8 @@ define([
     },
 
     add: function(){
+      // console.log(this);
+      // console.log(this.collection)
       var flashcardView = new AddFlashcardView({
         model: new Flashcard(),
         collection: this.collection

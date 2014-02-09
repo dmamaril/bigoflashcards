@@ -1,17 +1,23 @@
 define([
+  'underscore',
   'view',
   'hbs!templates/flashcards/index',
   'routers/mediator',
   'views/root',
   'routers/flashcards'
-], function (View, template, mediator, RootView, router) {
+], function (_, View, template, mediator, RootView, router) {
   return View.extend({
     initialize: function(){
+      View.prototype.initialize.apply(this, arguments); // call standard Thorax init code
       this.model = this.collection.get(0);
-      mediator.on('added', function(){
-        RootView.getInstance().setView(this);
-      }.bind(this));
+      // debugger;
+      // var that = this;
+      // mediator.on('added', function(){
+      //   debugger;
+      //   RootView.getInstance().setView();
+      // });
     },
+
     name: 'flashcards/index',
     template: template,
     events: {
@@ -48,7 +54,6 @@ define([
     add: function(e){
       e.preventDefault();
       // this.collection.add();
-      this.remove();
       mediator.trigger('add');
     }
   });
