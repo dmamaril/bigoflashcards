@@ -32,12 +32,21 @@ define([
     },
 
     checkGuess: function(e){
-      console.log(this.model)
+      this.model.set("attempts", this.model.get("attempts") + 1);
+
       if (e.target.innerHTML === this.model.get('answer')){
-        console.log("YOU WIN");
+        this.model.set("correct", this.model.get("correct") + 1);
       } else {
-        console.log("YOU LOSE SIR. GOOD DAY SIR");
       }
+        var totalCorrect = 0;
+        var totalAttempts = 0;
+        this.collection.each(function(value){
+          console.log(value);
+          totalCorrect += value.get("correct");
+          totalAttempts += value.get("attempts");
+        });
+        console.log(totalCorrect)
+        console.log(totalAttempts)
     },
 
     next: function(e){

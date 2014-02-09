@@ -26,15 +26,21 @@ define([
       {
         id: 0,
         question: "What is the time complexity of Bubble Sort?",
-        answer: "O(n^2)"
+        answer: "O(n^2)",
+        correct: 0,
+        attempts: 0
       }, {
         id: 1,
         question: "What is the space complexity of Merge Sort?",
-        answer: "O(n^2)"
+        answer: "O(n^2)",
+        correct: 0,
+        attempts: 0
       }, {
         id: 2,
         question: "What is the complexity of Doug?",
-        answer: "Too complex."
+        answer: "Too complex.",
+        correct: 0,
+        attempts: 0
       }
     ]),
 
