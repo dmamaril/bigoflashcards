@@ -18,6 +18,7 @@ define([
       "click button.previous": "previous",
       "click button.next": "next",
       "click button.toggle": "toggle",
+      "click button.guess": "checkGuess",
       "click button.add": "add"
     },
 
@@ -29,6 +30,16 @@ define([
         this.model = this.collection.get(this.model.id - 1);
       }
       this.render();
+    },
+
+    checkGuess: function(e){
+      console.log(this.model)
+      if (e.target.innerHTML === this.model.get("answer")){
+        console.log("YOU WIN")
+      } else {
+        console.log("YOU LOSE SIR. GOOD DAY SIR")
+
+      }
     },
 
     next: function(e){

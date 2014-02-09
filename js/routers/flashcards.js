@@ -39,7 +39,6 @@ define([
     ]),
 
     index: function(){
-      console.log(this);
       var indexView = new FlashcardIndexView({
         model: new Flashcard(),
         collection: this.collection

@@ -21,16 +21,12 @@ define([
     },
     addToCollection: function(e){
       e.preventDefault();
-      var complexity = [];
-      $('select.complexities').each(function(index, element){
-        complexity.push(element.value);
-      });
 
       this.collection.add(_.extend(this.serialize(), {
         id: this.collection.length,
-        answer: complexity[0]
+        answer: $('select.complexities')[0].value
       }));
-      
+
       mediator.trigger('added');
     }
   });
