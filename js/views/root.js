@@ -1,7 +1,9 @@
 define([
+  'underscore',
   'layout-view',
-  'hbs!templates/root'
-], function(LayoutView, rootTemplate) {
+  'hbs!templates/root',
+  'routers/mediator'
+], function(_, LayoutView, rootTemplate, mediator) {
   var RootView = LayoutView.extend({
     name: 'root',
     template: rootTemplate
@@ -15,6 +17,11 @@ define([
     }
     return instance;
   };
+
+  // mediator.on('added', _.bind(function(){
+  //   debugger;
+  //   RootView.getInstance().setView(this);
+  // }, this));
 
   return RootView;
 });
