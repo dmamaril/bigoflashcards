@@ -9,6 +9,7 @@ define([
     initialize: function(){
       View.prototype.initialize.apply(this, arguments); // call standard Thorax init code
       this.model = this.collection.get(0);
+      this.getScore();
     },
 
     name: 'flashcards/index',
@@ -20,6 +21,9 @@ define([
       "click button.guess": "checkGuess",
       "click button.add": "add"
     },
+
+    totalCorrect: 0,
+    totalAttempts: 0,
 
     previous: function(e){
       e.preventDefault();
@@ -33,20 +37,22 @@ define([
 
     checkGuess: function(e){
       this.model.set("attempts", this.model.get("attempts") + 1);
-
       if (e.target.innerHTML === this.model.get('answer')){
         this.model.set("correct", this.model.get("correct") + 1);
       }
+      this.getScore();
+    },
+
+    getScore: function(){
       var totalCorrect = 0;
       var totalAttempts = 0;
       this.collection.each(function(value){
         totalCorrect += value.get("correct");
         totalAttempts += value.get("attempts");
       });
-      $('.score').html("Your score is: " +
-       totalCorrect + " out of " + totalAttempts);
-
-      console.log(totalCorrect + " / " + totalAttempts);
+      this.totalCorrect = totalCorrect;
+      this.totalAttempts = totalAttempts;
+      this.render();
     },
 
     next: function(e){
