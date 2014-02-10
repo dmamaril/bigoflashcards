@@ -36,17 +36,17 @@ define([
 
       if (e.target.innerHTML === this.model.get('answer')){
         this.model.set("correct", this.model.get("correct") + 1);
-      } else {
       }
-        var totalCorrect = 0;
-        var totalAttempts = 0;
-        this.collection.each(function(value){
-          console.log(value);
-          totalCorrect += value.get("correct");
-          totalAttempts += value.get("attempts");
-        });
-        console.log(totalCorrect)
-        console.log(totalAttempts)
+      var totalCorrect = 0;
+      var totalAttempts = 0;
+      this.collection.each(function(value){
+        totalCorrect += value.get("correct");
+        totalAttempts += value.get("attempts");
+      });
+      $('.score').html("Your score is: " +
+       totalCorrect + " out of " + totalAttempts);
+
+      console.log(totalCorrect + " / " + totalAttempts);
     },
 
     next: function(e){
