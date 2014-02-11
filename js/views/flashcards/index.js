@@ -22,9 +22,6 @@ define([
       "click button.add": "add"
     },
 
-    totalCorrect: 0,
-    totalAttempts: 0,
-
     previous: function(e){
       e.preventDefault();
       if (this.model.id === 0) {
@@ -39,6 +36,9 @@ define([
       this.model.set("attempts", this.model.get("attempts") + 1);
       if (e.target.innerHTML === this.model.get('answer')){
         this.model.set("correct", this.model.get("correct") + 1);
+        this.result = "Correct!";
+      } else {
+        this.result = "Incorrect. The correct answer is " + this.model.get('answer') + ".";
       }
       this.getScore();
     },
