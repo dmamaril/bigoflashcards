@@ -8,6 +8,7 @@ define([
   return View.extend({
     initialize: function(){
       View.prototype.initialize.apply(this, arguments); // call standard Thorax init code
+      this.$el.attr("class", "container");
       this.model = this.collection.get(0);
       this.getScore();
     },
@@ -19,6 +20,7 @@ define([
       "click button.next": "next",
       "click button.toggle": "toggle",
       "click button.guess": "checkGuess",
+      "click button.review": "review",
       "click button.add": "add"
     },
 
@@ -72,6 +74,11 @@ define([
     add: function(e){
       e.preventDefault();
       mediator.trigger('add');
+    },
+
+    review: function(e){
+      e.preventDefault();
+      mediator.trigger('review');
     }
   });
 });

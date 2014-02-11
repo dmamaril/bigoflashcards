@@ -8,14 +8,6 @@ define([
   return View.extend({
     name: 'flashcards/add',
     template: template,
-    // initialize: function(){
-    //   View.prototype.initialize.apply(this, arguments);
-    //   mediator.on('add', _.bind(function(){
-    //     debugger;
-    //     RootView.getInstance().setView(this);
-    //     // $('body').append(this.render());
-    //   }, this));
-    // },
     events: {
       'submit': 'addToCollection'
     },
