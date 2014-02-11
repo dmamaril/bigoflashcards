@@ -20,6 +20,11 @@ define([
         model: new Flashcard(),
         collection: this.collection
       });
+      // console.log(reviewView);
+      // console.log(this);
+      // this.$el.append(reviewView.render().el);
+      // reviewView.appendTo(this);
+      // reviewView.$el.appendTo(this.$el)
       // this.appendTo(this.parent);
       // console.log(this);
       RootView.getInstance().setView(reviewView);

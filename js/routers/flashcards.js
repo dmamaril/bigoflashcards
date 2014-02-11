@@ -8,8 +8,6 @@ define([
   'views/flashcards/review',
   'routers/mediator'
 ], function (Backbone, Flashcard, Deck, RootView, FlashcardIndexView, AddFlashcardView, ReviewFlashcardsView, mediator) {
-  // TODO: Fix this fucking circular reference
-  // http://lostechies.com/derickbailey/2011/08/28/dont-execute-a-backbone-js-route-handler-from-your-code/
   return Backbone.Router.extend({
     routes: {
       "": "index",
@@ -48,22 +46,22 @@ define([
 
     index: function(){
       var indexView = new FlashcardIndexView({
-        model: new Flashcard(),
+        model: new Flashcard(),   // TODO: Fix new Flashcard
         collection: this.collection
       });
       RootView.getInstance().setView(indexView);
-      var flashcardView = new AddFlashcardView({
-        model: new Flashcard(),
-        collection: this.collection
-      });
+      // var flashcardView = new AddFlashcardView({
+      //   model: new Flashcard(),
+      //   collection: this.collection
+      // });
     },
 
     add: function(){
-      var flashcardView = new AddFlashcardView({
+      var addFlashcardView = new AddFlashcardView({
         model: new Flashcard(),
         collection: this.collection
       });
-      RootView.getInstance().setView(flashcardView);
+      RootView.getInstance().setView(addFlashcardView);
     },
 
     review: function(){
