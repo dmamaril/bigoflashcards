@@ -10,16 +10,17 @@ define([
   return View.extend({
     name: 'flashcards/add',
     template: template,
-    events: {
-      'submit': 'addToCollection'
-    },
+    // template: Handlebars.compile('{{view child}}'),
+    // events: {
+    //   'submit': 'addToCollection'
+    // },
 
     initialize: function(){
       View.prototype.initialize.apply(this, arguments); // call standard Thorax init code
-      var reviewView = new ReviewCollectionView({
-        model: new Flashcard(),
-        collection: this.collection
-      });
+      // var reviewView = new ReviewCollectionView({
+      //   model: new Flashcard(),
+      //   collection: this.collection
+      // });
       // console.log(reviewView);
       // console.log(this);
       // this.$el.append(reviewView.render().el);
@@ -27,8 +28,12 @@ define([
       // reviewView.$el.appendTo(this.$el)
       // this.appendTo(this.parent);
       // console.log(this);
-      RootView.getInstance().setView(reviewView);
-    }
+      RootView.getInstance().setView(this);
+    },
+
+    child: new ReviewCollectionView({
+      collection: this.collection
+    })
 
   });
 });
