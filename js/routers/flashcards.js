@@ -46,14 +46,10 @@ define([
 
     index: function(){
       var indexView = new FlashcardIndexView({
-        model: new Flashcard(),   // TODO: Fix new Flashcard
+        model: this.collection.get(0),
         collection: this.collection
       });
       RootView.getInstance().setView(indexView);
-      // var flashcardView = new AddFlashcardView({
-      //   model: new Flashcard(),
-      //   collection: this.collection
-      // });
     },
 
     add: function(){

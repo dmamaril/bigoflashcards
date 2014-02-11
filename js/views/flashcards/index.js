@@ -9,7 +9,6 @@ define([
     initialize: function(){
       View.prototype.initialize.apply(this, arguments); // call standard Thorax init code
       this.$el.attr("class", "container");
-      this.model = this.collection.get(0);
       this.getScore();
     },
 
