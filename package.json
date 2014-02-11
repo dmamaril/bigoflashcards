@@ -1,6 +1,6 @@
 {
-  "name": "flashcards-nonchef",
-  "appName": "FlashcardsNonchef",
+  "name": "flashcards",
+  "appName": "Flashcards",
   "version": "0.0.0",
   "dependencies": {
     "connect": "~2.10.x"
