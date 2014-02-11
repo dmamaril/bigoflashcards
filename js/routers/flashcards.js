@@ -6,8 +6,9 @@ define([
   'views/flashcards/index',
   'views/flashcards/add',
   'views/flashcards/review',
+  'views/flashcards/-review-view',
   'routers/mediator'
-], function (Backbone, Flashcard, Deck, RootView, FlashcardIndexView, AddFlashcardView, ReviewFlashcardsView, mediator) {
+], function (Backbone, Flashcard, Deck, RootView, FlashcardIndexView, AddFlashcardView, ReviewFlashcardsView, ReviewCollectionView, mediator) {
   return Backbone.Router.extend({
     routes: {
       "": "index",
@@ -63,6 +64,9 @@ define([
     review: function(){
       var reviewView = new ReviewFlashcardsView({
         model: new Flashcard(),
+        child: new ReviewCollectionView({
+          collection: this.collection
+        }),
         collection: this.collection
       });
       RootView.getInstance().setView(reviewView);
