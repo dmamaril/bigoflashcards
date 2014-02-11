@@ -2,10 +2,11 @@ define([
   'underscore',
   'view',
   'hbs!templates/flashcards/review',
+  'models/flashcards/flashcard',
   'views/root',
-  'views/cardView',
+  'views/flashcards/-review-view',
   'routers/mediator'
-], function (_, View, template, RootView, CardView, mediator) {
+], function (_, View, template, Flashcard, RootView, ReviewCollectionView, mediator) {
   return View.extend({
     name: 'flashcards/add',
     template: template,
@@ -15,27 +16,15 @@ define([
 
     initialize: function(){
       View.prototype.initialize.apply(this, arguments); // call standard Thorax init code
-      this.collection.each(function(card, index, collection){
-        var cardView = new CardView({
-          model: card,
-          collection: collection
-        });
-        RootView.append(cardView);
+      var reviewView = new ReviewCollectionView({
+        model: new Flashcard(),
+        collection: this.collection
       });
-    },
-
-    addToCollection: function(e){
-      e.preventDefault();
-
-      this.collection.add(_.extend(this.serialize(), {
-        id: this.collection.length,
-        answer: $('select.complexities')[0].value,
-        correct: 0,
-        attempts: 0
-      }));
-
-      mediator.trigger('added');
+      // this.appendTo(this.parent);
+      // console.log(this);
+      RootView.getInstance().setView(reviewView);
     }
+
   });
 });
 
