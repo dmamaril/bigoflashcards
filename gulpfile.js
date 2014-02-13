@@ -23,12 +23,6 @@ gulp.task('jshint', function(){
       .pipe(jshint.reporter('default'));
 });
 
-gulp.task('changed', function(){
-  gulp.src(paths.input.scripts)
-      .pipe(changed(paths.output.scripts))
-      .pipe(gulp.dest(paths.output.scripts));
-});
-
 gulp.task('stylus', function(){
   gulp.src(paths.input.css)
       .pipe(changed(paths.output.css))
