@@ -5,7 +5,7 @@ var stylus = require('gulp-stylus');
 var nodemon = require('gulp-nodemon');
 
 var paths = {
-  all: ['css/**/*.styl', 'js/**/*.js', 'server/**/*.js'],
+  all: ['css/**/*.styl', 'js/**/*.js', 'server/**/*.js', 'js/**/*.hbs'],
   input: {
     scripts: ['js/**/*.js'],
     css: ['css/**/*.styl']
@@ -39,12 +39,11 @@ gulp.task('stylus', function(){
 gulp.task('develop', function(){
   nodemon({
     script: 'server.js',
-  }).on('restart', ['jshint', 'stylus']);
+  });
 });
 
 gulp.task('watch', function(){
-  gulp.watch(paths.all, ['jshint', 'stylus', 'develop']);
+  gulp.watch(paths.all, ['jshint', 'stylus']);
 });
-
 
 gulp.task('default', ['watch', 'develop']);
