@@ -42,4 +42,9 @@ gulp.task('develop', function(){
   }).on('restart', ['jshint', 'stylus']);
 });
 
-// gulp.task('default', ['nodemon']
+gulp.task('watch', function(){
+  gulp.watch(paths.all, ['jshint', 'stylus', 'develop']);
+});
+
+
+gulp.task('default', ['watch', 'develop']);
