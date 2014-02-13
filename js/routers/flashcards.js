@@ -5,10 +5,10 @@ define([
   'views/root',
   'views/flashcards/index',
   'views/flashcards/add',
-  'routers/mediator',
-], function (Backbone, Flashcard, Deck, RootView, FlashcardIndexView, AddFlashcardView, mediator) {
-  // TODO: Fix this fucking circular reference
-  // http://lostechies.com/derickbailey/2011/08/28/dont-execute-a-backbone-js-route-handler-from-your-code/
+  'views/flashcards/review',
+  'views/flashcards/-review-view',
+  'routers/mediator'
+], function (Backbone, Flashcard, Deck, RootView, FlashcardIndexView, AddFlashcardView, ReviewFlashcardsView, ReviewCollectionView, mediator) {
   return Backbone.Router.extend({
     routes: {
       "": "index",
@@ -20,43 +20,56 @@ define([
     initialize: function(){
       mediator.on('added', this.index.bind(this));
       mediator.on('add', this.add.bind(this));
+      mediator.on('review', this.review.bind(this));
     },
 
     collection: new Deck([
       {
         id: 0,
         question: "What is the time complexity of Bubble Sort?",
-        answer: "O(n^2)"
+        answer: "O(n^2)",
+        correct: 0,
+        attempts: 0
       }, {
         id: 1,
         question: "What is the space complexity of Merge Sort?",
-        answer: "O(n^2)"
+        answer: "O(n^2)",
+        correct: 0,
+        attempts: 0
       }, {
         id: 2,
         question: "What is the complexity of Doug?",
-        answer: "Too complex."
+        answer: "Too complex.",
+        correct: 0,
+        attempts: 0
       }
     ]),
 
     index: function(){
-      console.log(this);
       var indexView = new FlashcardIndexView({
-        model: new Flashcard(),
+        model: this.collection.get(0),
         collection: this.collection
       });
       RootView.getInstance().setView(indexView);
-      var flashcardView = new AddFlashcardView({
-        model: new Flashcard(),
-        collection: this.collection
-      });
     },
 
     add: function(){
-      var flashcardView = new AddFlashcardView({
+      var addFlashcardView = new AddFlashcardView({
         model: new Flashcard(),
         collection: this.collection
       });
-      RootView.getInstance().setView(flashcardView);
+      RootView.getInstance().setView(addFlashcardView);
+    },
+
+    review: function(){
+      var reviewView = new ReviewFlashcardsView({
+        model: new Flashcard(),
+        child: new ReviewCollectionView({
+          collection: this.collection
+        }),
+        collection: this.collection
+      });
+      RootView.getInstance().setView(reviewView);
     }
 
   });

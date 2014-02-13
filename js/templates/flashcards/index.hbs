@@ -1,7 +1,19 @@
   <button href='/' class='previous'>Previous</button>
-  <div>{{question}}</div>
-  <div class='hide toggle'>{{answer}}</div>
+  <div class='question'>{{question}}</div>
+  <div class='hide toggle answer'>{{answer}}</div>
+  <button href='/' class='guess'>O(1)</button>
+  <button href='/' class='guess'>O(log n)</button>
+  <button href='/' class='guess'>O(n)</button>
+  <button href='/' class='guess'>O(n log n)</button>
+  <button href='/' class='guess'>O(n^2)</button>
+  <button href='/' class='guess'>O(2^n)</button>
+  <button href='/' class='guess'>O(n!)</button>
+  <br>
+  <div class='result'>{{result}}</div>
+  <div class='score'>Your score is: {{totalCorrect}} out of {{totalAttempts}}</div>
   <button href='/' class='toggle'>Show</button>
   <button href='/' class='hide toggle'>Hide</button>
   <button href='/' class='next'>Next</button>
+  <br>
+  <button href='/' class='review'>Review cards</button>
   <button href='/' class='add'>Add a card</button>
