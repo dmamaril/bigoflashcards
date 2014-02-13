@@ -5,7 +5,8 @@
   "dependencies": {
     "connect": "~2.10.x",
     "underscore": "*",
-    "gulp-stylus": "0.0.12"
+    "gulp-stylus": "0.0.12",
+    "gulp-nodemon": "~0.1.2"
   },
   "devDependencies": {
     "grunt-contrib-connect": "~0.5.0",
