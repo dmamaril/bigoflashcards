@@ -6,7 +6,8 @@
     "connect": "~2.10.x",
     "underscore": "*",
     "gulp-stylus": "0.0.12",
-    "gulp-nodemon": "~0.1.2"
+    "gulp-nodemon": "~0.1.2",
+    "gulp-livereload": "~1.1.1"
   },
   "devDependencies": {
     "grunt-contrib-connect": "~0.5.0",
@@ -38,7 +39,9 @@
     "grunt-express-server": "~0.4.11",
     "gulp": "~3.5.2",
     "gulp-jshint": "~1.4.0",
-    "gulp-changed": "~0.1.0"
+    "gulp-changed": "~0.1.0",
+    "gulp-livereload": "~1.1.1",
+    "tiny-lr": "0.0.5"
   },
   "scripts": {
     "start": "node ./server.js",

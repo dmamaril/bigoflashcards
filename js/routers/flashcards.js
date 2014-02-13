@@ -11,7 +11,7 @@ define([
 ], function (Backbone, Flashcard, Deck, RootView, FlashcardIndexView, AddFlashcardView, ReviewFlashcardsView, ReviewCollectionView, mediator) {
   return Backbone.Router.extend({
     routes: {
-      "": "index",
+      "": "home",
       "index": "index",
       "add": "add",
       ':id': "showCard"
@@ -44,6 +44,13 @@ define([
         attempts: 0
       }
     ]),
+
+    login: function(){
+      var loginView = new LoginView({
+        model: new User()
+      });
+      RootView.getInstance().setView(loginView);
+    },
 
     index: function(){
       var indexView = new FlashcardIndexView({
