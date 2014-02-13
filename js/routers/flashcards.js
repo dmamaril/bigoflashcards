@@ -1,6 +1,7 @@
 define([
   'backbone',
   'models/flashcards/flashcard',
+  'models/users/user',
   'collections/flashcards/deck',
   'views/root',
   'views/flashcards/index',
@@ -8,7 +9,16 @@ define([
   'views/flashcards/review',
   'views/flashcards/-review-view',
   'routers/mediator'
-], function (Backbone, Flashcard, Deck, RootView, FlashcardIndexView, AddFlashcardView, ReviewFlashcardsView, ReviewCollectionView, mediator) {
+], function  (Backbone,
+              Flashcard,
+              User,
+              Deck,
+              RootView,
+              FlashcardIndexView,
+              AddFlashcardView,
+              ReviewFlashcardsView,
+              ReviewCollectionView,
+              mediator) {
   return Backbone.Router.extend({
     routes: {
       "": "home",
