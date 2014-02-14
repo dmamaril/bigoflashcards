@@ -1,7 +1,8 @@
 define([
+  'config',
   'view',
   'hbs!templates/index/login-view'
-], function (View, template) {
+], function (config, View, template) {
   return View.extend({
     name: 'index/login-view',
     template: template,
@@ -13,7 +14,16 @@ define([
     alertLogin: function(e){
       e.preventDefault();
       var userData = this.serialize();
-      console.log(userData);
+      $.ajax({
+        url: config.host + "/api/login/",
+        type: "POST",
+        dataType: "json",
+        data: userData,
+        success: function(data){
+          console.log(data);
+          console.log("GREAT SUCCESS");
+        }
+      });
     }
   });
 });

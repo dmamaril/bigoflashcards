@@ -15,7 +15,7 @@ define([
       e.preventDefault();
       var userData = this.serialize();
       $.ajax({
-        url: config.host + "/api/login/",
+        url: config.host + "/api/signup/",
         type: "POST",
         dataType: "json",
         data: userData,
