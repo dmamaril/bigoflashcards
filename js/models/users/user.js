@@ -6,9 +6,9 @@ define([
     name: 'users/user',
 
     defaults: {
-      name: "Doug's Beard",
-      email: "doug@hackreactor.com",
-      username: "dougsbeard",
+      username: "",
+      password: "",
+      email: "",
       decks: []
     },
 
@@ -16,4 +16,3 @@ define([
 
   });
 });
- 

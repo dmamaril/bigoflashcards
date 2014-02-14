@@ -9,6 +9,8 @@ define([
   'views/flashcards/review',
   'views/flashcards/-review-view',
   'views/index/login-view',
+  'views/index/signup-view',
+  'views/index/welcome-view',
   'routers/mediator'
 ], function  (Backbone,
               Flashcard,
@@ -20,6 +22,8 @@ define([
               ReviewFlashcardsView,
               ReviewCollectionView,
               LoginView,
+              SignupView,
+              WelcomeView,
               mediator) {
   return Backbone.Router.extend({
     routes: {
@@ -58,10 +62,16 @@ define([
     ]),
 
     home: function(){
-      var loginView = new LoginView({
-        model: new User()
+      var welcomeView = new WelcomeView({
+        model: new User(),
+        loginChild: new LoginView({
+          model: this.model
+        }),
+        signupChild: new SignupView({
+          model: this.model
+        })
       });
-      RootView.getInstance().setView(loginView);
+      RootView.getInstance().setView(welcomeView);
     },
 
     index: function(){
