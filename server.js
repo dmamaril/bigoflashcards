@@ -2,7 +2,8 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var _ = require('underscore');
-var routes = require('./server/routes/index');
+
+var api = require('./server/routes/api');
 
 // initialize express
 
@@ -54,9 +55,13 @@ if ('development' === app.get('env')) {
 // // serve /public @ /
 // app.use('/', express.static(path.join(appBase, 'public')));
 
-app.get('lol', function(req, res){
-  res.send('lol');
+app.get('/lol', function(req, res){
+  res.send('<img src=http://cdn.smosh.com/sites/default/files/bloguploads/family-guy-gif-hater-0.gif></img>');
 });
+
+app.get('/api/users/', api.users);
+app.post('/api/users/', api.addUser);
+
 
 //
 // create and launch server

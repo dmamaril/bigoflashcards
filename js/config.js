@@ -2,6 +2,8 @@ define([], function() {
   'use strict';
 
   return {
-    host: 'http://localhost:1337'
+
+    host: window.location.hostname + ':1337'
+    // host: 'http://localhost:1337' 
   };
 });
