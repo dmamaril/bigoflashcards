@@ -3,7 +3,7 @@ define([], function() {
 
   return {
 
-    host: window.location.hostname + ':1337'
-    // host: 'http://localhost:1337' 
+    host: window.location.protocol + "//" +
+          window.location.hostname + ':1337'
   };
 });

@@ -55,12 +55,21 @@ if ('development' === app.get('env')) {
 // // serve /public @ /
 // app.use('/', express.static(path.join(appBase, 'public')));
 
+app.all('*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "content-type, accept, X-Requested-With");
+  next();
+});
+
 app.get('/lol', function(req, res){
   res.send('<img src=http://cdn.smosh.com/sites/default/files/bloguploads/family-guy-gif-hater-0.gif></img>');
 });
 
 app.get('/api/users/', api.users);
 app.post('/api/users/', api.addUser);
+app.post('/api/login/', api.login);
+app.post('/api/signup/', api.signup);
 
 
 //
