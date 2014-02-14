@@ -1,6 +1,6 @@
-var fs    = require('fs'),
-    path  = require('path'),
-    bower = require('bower');
+// var fs    = require('fs'),
+//     path  = require('path'),
+//     bower = require('bower');
 
 /**
  *
@@ -286,7 +286,7 @@ module.exports = function(grunt) {
 
   // run tests one time in chrome, firefox, safari
   grunt.registerTask('test-deploy', [
-    'build'
+    'build',
     'karma:deploy'
   ]);
 
