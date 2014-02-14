@@ -37,23 +37,24 @@ if ('development' === app.get('env')) {
 // routes
 //
 
-var appBase = path.resolve(__dirname, './');
+// var appBase = path.resolve(__dirname, './');
 
 // keep app from being browsable @ /public
-app.get('/public', function (req, res) {
-  res.redirect('/');
-});
-app.get('/public/index.html', function (req, res) {
-  res.redirect('/');
-});
+// app.get('/public', function (req, res) {
+//   res.redirect('/');
+// });
+// app.get('/public/index.html', function (req, res) {
+//   res.redirect('/');
+// });
 
-// serve everything
-app.use('/', express.static(appBase));
+// app.get('/', routes.index);
+// // serve everything
+// app.use('/', express.static(appBase));
 
-// serve /public @ /
-app.use('/', express.static(path.join(appBase, 'public')));
+// // serve /public @ /
+// app.use('/', express.static(path.join(appBase, 'public')));
 
-app.get('/lol', function(req, res){
+app.get('lol', function(req, res){
   res.send('lol');
 });
 

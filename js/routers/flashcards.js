@@ -8,6 +8,7 @@ define([
   'views/flashcards/add',
   'views/flashcards/review',
   'views/flashcards/-review-view',
+  'views/index/login-view',
   'routers/mediator'
 ], function  (Backbone,
               Flashcard,
@@ -18,6 +19,7 @@ define([
               AddFlashcardView,
               ReviewFlashcardsView,
               ReviewCollectionView,
+              LoginView,
               mediator) {
   return Backbone.Router.extend({
     routes: {
@@ -55,7 +57,7 @@ define([
       }
     ]),
 
-    login: function(){
+    home: function(){
       var loginView = new LoginView({
         model: new User()
       });
